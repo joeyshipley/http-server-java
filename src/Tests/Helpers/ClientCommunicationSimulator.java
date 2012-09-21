@@ -8,11 +8,11 @@ public class ClientCommunicationSimulator
     private static String _requestHeader;
     private static Socket _clientSocket;
 
-    public static void sendRequest(Socket client, String path, String data)
+    public static void sendRequest(Socket client, String httpMethod, String path, String data)
         throws IOException
     {
         _clientSocket = client;
-        _requestHeader = "GET " + path + " HTTP/1.0\r\n";
+        _requestHeader = httpMethod + " " + path + " HTTP/1.0\r\n";
         System.out.println(_requestHeader);
 
         Thread thread = new Thread(new Runnable() {
