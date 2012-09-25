@@ -18,7 +18,7 @@ public class HttpServerProcessTests
          throws IOException
     {
         _serverSocket = new ServerSocket(TEST_PORT);
-        _SUT = HttpServerProcess.createFrom(_serverSocket);
+        _SUT = HttpServerProcess.createFrom(_serverSocket, "public");
     }
 
     @After

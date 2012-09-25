@@ -9,16 +9,16 @@ public class HttpServerProcess implements Runnable
     private RequestParser requestParser;
     private ResponseProvider responseProvider;
 
-    private HttpServerProcess(ServerSocket serverSocket)
+    private HttpServerProcess(ServerSocket serverSocket, String rootDirectory)
     {
         server = serverSocket;
         requestParser = RequestParser.create();
-        responseProvider = ResponseProvider.create();
+        responseProvider = ResponseProvider.create(rootDirectory);
     }
 
-    public static HttpServerProcess createFrom(ServerSocket serverSocket)
+    public static HttpServerProcess createFrom(ServerSocket serverSocket, String rootDirectory)
     {
-        return new HttpServerProcess(serverSocket);
+        return new HttpServerProcess(serverSocket, rootDirectory);
     }
 
     public void run()
@@ -75,7 +75,6 @@ public class HttpServerProcess implements Runnable
         throws IOException
     {
         String[] response = responseProvider.getResponseFrom(method, path);
-
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
         for(int i = 0; i < response.length; i++)
             out.println(response[i]);

@@ -27,6 +27,21 @@
     <groupTables value="false" />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/Core/ServerRunner.java" line="10" class="Core.ServerRunner" package="Core">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -67,19 +82,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ResponseProvider.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ResponseProvider.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Core/ResponseProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="135" selection-start="1484" selection-end="1484" vertical-scroll-proportion="0.8356807">
+            <state line="94" column="28" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResponseProviderTests.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ResponseProviderTests.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Tests/ResponseProviderTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="0" selection-start="2558" selection-end="2558" vertical-scroll-proportion="0.0">
+            <state line="67" column="54" selection-start="1950" selection-end="1950" vertical-scroll-proportion="0.6036364">
               <folding />
             </state>
           </provider>
@@ -102,22 +117,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Tests/Core/HttpServerTests.java" />
         <option value="$PROJECT_DIR$/src/Legacy/HttpServerProcess.java" />
         <option value="$PROJECT_DIR$/src/Legacy/HttpServer.java" />
         <option value="$PROJECT_DIR$/src/Legacy/HttpServerProcessOLD.java" />
         <option value="$PROJECT_DIR$/src/Core/HttpServerProcessOLD.java" />
         <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/Tests/HttpServerTests.java" />
-        <option value="$PROJECT_DIR$/src/Core/HttpServer.java" />
         <option value="$PROJECT_DIR$/src/Tests/Helpers/ClientCommunicationSimulator.java" />
         <option value="$PROJECT_DIR$/src/Core/RequestInformation.java" />
         <option value="$PROJECT_DIR$/src/Core/RequestParser.java" />
         <option value="$PROJECT_DIR$/src/Tests/RequestParserTests.java" />
         <option value="$PROJECT_DIR$/src/Tests/HttpServerProcessTests.java" />
         <option value="$PROJECT_DIR$/src/Core/HttpServerProcess.java" />
-        <option value="$PROJECT_DIR$/src/Tests/ResponseProviderTests.java" />
+        <option value="$PROJECT_DIR$/src/Core/ServerRunnerArguments.java" />
+        <option value="$PROJECT_DIR$/src/Core/HttpServer.java" />
         <option value="$PROJECT_DIR$/src/Core/ResponseProvider.java" />
+        <option value="$PROJECT_DIR$/src/Tests/ResponseProviderTests.java" />
       </list>
     </option>
   </component>
@@ -160,20 +175,6 @@
             <PATH_ELEMENT USER_OBJECT="Root">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -270,6 +271,20 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="http-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="http-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -285,8 +300,8 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
   </component>
@@ -303,7 +318,7 @@
       <recent name="Tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AppRunner">
+  <component name="RunManager" selected="JUnit.Tests in http-server">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -350,24 +365,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -394,6 +391,24 @@
       <envs />
       <properties />
       <listeners />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -586,7 +601,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23850575" sideWeight="0.47297296" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.527027" sideWeight="0.9970696" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.527027" sideWeight="0.9970696" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32504147" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -676,16 +691,6 @@
         <state line="3" column="20" selection-start="53" selection-end="53" vertical-scroll-proportion="0.07550336" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/ServerRunnerArguments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/HttpServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="33" selection-start="823" selection-end="823" vertical-scroll-proportion="0.5652174" />
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/org/junit/runners/model/FrameworkMethod.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="19" selection-start="316" selection-end="316" vertical-scroll-proportion="0.3125" />
@@ -701,51 +706,59 @@
         <state line="24" column="48" selection-start="710" selection-end="710" vertical-scroll-proportion="0.29577464" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/ServerRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="443" selection-end="443" vertical-scroll-proportion="0.39906102" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tests/Helpers/ClientCommunicationSimulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="51" selection-start="519" selection-end="519" vertical-scroll-proportion="0.37558687">
-          <folding>
-            <element signature="e#1472#1473#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/HttpServerProcessTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="44" selection-start="377" selection-end="377" vertical-scroll-proportion="0.28169015">
-          <folding />
-        </state>
+        <state line="17" column="51" selection-start="519" selection-end="519" vertical-scroll-proportion="0.37558687" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/RequestParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="52" selection-start="232" selection-end="232" vertical-scroll-proportion="0.625">
+        <state line="12" column="52" selection-start="232" selection-end="232" vertical-scroll-proportion="0.625" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/HttpServerProcessTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="35" selection-start="726" selection-end="726" vertical-scroll-proportion="0.3125" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/ServerRunnerArguments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="16" selection-start="68" selection-end="68" vertical-scroll-proportion="0.09389672">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/ServerRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="46" selection-start="356" selection-end="356" vertical-scroll-proportion="0.3051643">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/HttpServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="128" selection-start="562" selection-end="562" vertical-scroll-proportion="0.38184664">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/HttpServerProcess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="2297" selection-end="2297" vertical-scroll-proportion="1.59375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/ResponseProviderTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="0" selection-start="2558" selection-end="2558" vertical-scroll-proportion="0.0">
+        <state line="61" column="51" selection-start="1744" selection-end="1744" vertical-scroll-proportion="3.125">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/ResponseProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="135" selection-start="1484" selection-end="1484" vertical-scroll-proportion="0.8356807">
+        <state line="94" column="28" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/ResponseProviderTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="54" selection-start="1950" selection-end="1950" vertical-scroll-proportion="0.6036364">
           <folding />
         </state>
       </provider>

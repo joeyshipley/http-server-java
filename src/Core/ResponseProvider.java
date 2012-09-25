@@ -4,26 +4,49 @@ import java.io.*;
 
 public class ResponseProvider
 {
-    private ResponseProvider() {}
+    private String directory;
 
-    public static ResponseProvider create()
+    private ResponseProvider(String rootDirectory)
     {
-        return new ResponseProvider();
+        directory = rootDirectory;
+    }
+
+    public static ResponseProvider create(String rootDirectory)
+    {
+        return new ResponseProvider(rootDirectory);
     }
 
     public String[] getResponseFrom(String method, String path)
     {
+        path = getActualPath(path);
+
+        if(isDirectory(path))
+            return loadDirectoryContents(path);
+
         return loadFileContents(path);
     }
 
-    public String[] loadFileContents(String filePath)
+    private String[] loadDirectoryContents(String path)
     {
-        String[] response = new String[0];
-        String path = getActualPath(filePath);
+        File directory = new File(path);
+        String[] files = directory.list();
 
+        String responseString = "";
+        responseString += successfulResponseHeaders();
+        responseString += buildHtmlPageStart();
+        for(int i = 0; i < files.length; i++)
+            responseString += convertFileToHtmlLink(files[i]) + "\r\n";
+        responseString += buildHtmlPageEnd();
+
+        return responseString.split("\r\n");
+    }
+
+    private String[] loadFileContents(String path)
+    {
         if(!fileExists(path))
             return notFoundResponseHeaders().split("\r\n");
 
+        String[] response = new String[0];
         try
         {
             FileInputStream inputStream = new FileInputStream(path);
@@ -60,30 +83,79 @@ public class ResponseProvider
     {
         if(filePath == null)
             filePath = "";
-        if(!filePath.startsWith("/"))
+        if(hasTrailingSlash(filePath))
+            filePath = filePath.substring(0, filePath.length() - 1);
+        if(shouldPathHaveLeadingSlash(filePath))
             filePath = "/" + filePath;
 
         String path;
-        if(filePath.equals("/"))
-            path = "/public/default.html";
-        else
-            path = "/public" + filePath;
+        path = "./" + directory;
 
-        return "." + path;
+        if(isDefaultDirectory(filePath))
+            return path + "/";
+
+        if(isPathRootPath(filePath))
+            return path + "/default.html";
+
+        return path + filePath;
+    }
+
+    private String buildHtmlPageStart()
+    {
+        String page = "";
+        page += "<html>\r\n";
+        page += "<head></head>\r\n";
+        page += "<body>\r\n";
+        return page;
+    }
+
+    private String buildHtmlPageEnd()
+    {
+        String page = "";
+        page += "</body>\r\n";
+        page += "</html>\r\n";
+        return page;
+    }
+
+    private String convertFileToHtmlLink(String filename)
+    {
+        return "<a href='" + filename + "'>" + filename + "</a><br />";
+    }
+
+    private boolean isDefaultDirectory(String path)
+    {
+        return path.equals("/")
+            || path.toLowerCase().equals("/" + directory.toLowerCase());
+    }
+
+    private boolean isPathRootPath(String path)
+    {
+        return path.equals("");
+    }
+
+    private boolean shouldPathHaveLeadingSlash(String path)
+    {
+        return !path.startsWith("/") && path.length() > 1;
+    }
+
+    private boolean hasTrailingSlash(String path)
+    {
+        if(path.length() < 2)
+            return false;
+
+        return (path.length() - 1) == path.lastIndexOf("/");
     }
 
     private boolean fileExists(String path)
     {
-        try
-        {
-            FileInputStream inputStream = new FileInputStream(path);
-            inputStream.close();
-            return true;
-        }
-        catch(Exception e)
-        {
-            return false;
-        }
+        File file = new File(path);
+        return file.exists();
+    }
+
+    private boolean isDirectory(String path)
+    {
+        File file = new File(path);
+        return file.exists() && file.isDirectory();
     }
 
     private String successfulResponseHeaders()

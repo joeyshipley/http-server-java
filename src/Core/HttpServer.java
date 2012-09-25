@@ -9,14 +9,14 @@ import java.net.Socket;
 
 public class HttpServer
 {
-    private int _port;
-    private String _directory;
-    private ServerSocket _serverSocket;
+    private int port;
+    private String directory;
+    private ServerSocket serverSocket;
 
     private HttpServer(int port, String directory)
     {
-        _port = port;
-        _directory = directory;
+        this.port = port;
+        this.directory = directory;
     }
 
     public static HttpServer createFrom(int port, String directory)
@@ -27,8 +27,8 @@ public class HttpServer
     public void start()
         throws IOException
     {
-        _serverSocket = new ServerSocket(_port);
-        ServerRunner.log("HTTP Server on port: " + _port);
+        serverSocket = new ServerSocket(port);
+        ServerRunner.log("HTTP Server on port: " + port);
         while(true)
             createHttpServerProcessOnNewThread();
     }
@@ -36,12 +36,12 @@ public class HttpServer
     public void stop()
         throws IOException
     {
-        _serverSocket.close();
+        serverSocket.close();
     }
 
     private void createHttpServerProcessOnNewThread()
     {
-        HttpServerProcess process = HttpServerProcess.createFrom(_serverSocket);
+        HttpServerProcess process = HttpServerProcess.createFrom(serverSocket, directory);
         Thread thread = new Thread(process);
         thread.run();
     }
