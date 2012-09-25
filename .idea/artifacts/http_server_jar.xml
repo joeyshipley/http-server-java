@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="http-server:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/http_server_jar</output-path>
+    <output-path>$PROJECT_DIR$/</output-path>
     <root id="archive" name="http-server.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />

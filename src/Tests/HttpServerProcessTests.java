@@ -56,7 +56,7 @@ public class HttpServerProcessTests
     }
 
     @Test
-    public void when_the_server_is_listening___and_something_talks_to_it_with_a_simple_request___it_returns_a_200_OK()
+    public void when_the_server_is_listening___and_something_talks_to_it_with_a_simple_request___all_is_well()
             throws IOException
     {
         performCycleOnThread();
@@ -65,19 +65,6 @@ public class HttpServerProcessTests
         ClientCommunicationSimulator.sendRequest(client, "GET", "http://localhost:" + TEST_PORT + "/", "");
         client.close();
 
-        // TODO: assert 200 OK comes back
-    }
-
-    @Test
-    public void when_the_server_is_listening___and_something_talks_to_it_with_a_simple_GET_request_to_the_root___it_hello_world()
-            throws IOException
-    {
-        performCycleOnThread();
-
-        Socket client = new Socket("localhost", TEST_PORT);
-        ClientCommunicationSimulator.sendRequest(client, "GET", "http://localhost:" + TEST_PORT + "/", "");
-        client.close();
-
-        // TODO: assert hello world comes back
+        // NOTE: no exception was thrown
     }
 }

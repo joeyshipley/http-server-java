@@ -1,19 +1,19 @@
 package Core;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.io.*;
+import java.net.*;
 
 public class HttpServerProcess implements Runnable
 {
-    private ServerSocket _serverSocket;
+    private ServerSocket server;
+    private RequestParser requestParser;
+    private ResponseProvider responseProvider;
 
     private HttpServerProcess(ServerSocket serverSocket)
     {
-        _serverSocket = serverSocket;
+        server = serverSocket;
+        requestParser = RequestParser.create();
+        responseProvider = ResponseProvider.create();
     }
 
     public static HttpServerProcess createFrom(ServerSocket serverSocket)
@@ -33,11 +33,9 @@ public class HttpServerProcess implements Runnable
     {
         try
         {
-            Socket clientSocket = _serverSocket.accept();
-
-            readRequest(clientSocket);
-            sendResponse(clientSocket);
-
+            Socket clientSocket = server.accept();
+            RequestInformation info = readRequest(clientSocket);
+            sendResponse(clientSocket, info.method, info.path);
             clientSocket.close();
         }
         catch (IOException e)
@@ -46,29 +44,41 @@ public class HttpServerProcess implements Runnable
         }
     }
 
-    private void readRequest(Socket clientSocket)
+    private RequestInformation readRequest(Socket clientSocket)
         throws IOException
     {
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        while(true)
+
+        String requestHeader = "";
+
+        boolean continueReading = true;
+        while(continueReading)
         {
-            String requestString = in.readLine();
-            ServerRunner.log(requestString);
-            if(requestString.equals("")) break;
+            String currentRequestLine = in.readLine();
+            ServerRunner.log(currentRequestLine);
+
+            if(requestHeader.equals(""))
+                requestHeader = currentRequestLine;
+
+            if(isEndOfRequestHeader(currentRequestLine))
+                continueReading = false;
         }
+        return requestParser.buildHeaderInfo(requestHeader);
     }
 
-    private void sendResponse(Socket clientSocket)
+    private boolean isEndOfRequestHeader(String currentHeaderLineValue)
+    {
+        return currentHeaderLineValue.equals("");
+    }
+
+    private void sendResponse(Socket clientSocket, String method, String path)
         throws IOException
     {
+        String[] response = responseProvider.getResponseFrom(method, path);
+
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
-        out.println("HTTP/1.1 200 OK");
-        out.println("Content-Type: text/html");
-        out.println("");
-        out.println("<html>");
-        out.println("<head><title>HTTP Server: Hello World</title></head>");
-        out.println("<body><p>Hello World</p></body>");
-        out.println("</html>");
+        for(int i = 0; i < response.length; i++)
+            out.println(response[i]);
         out.flush();
     }
 }
