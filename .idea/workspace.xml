@@ -82,19 +82,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ResponseProvider.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ResponseProvider.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Core/ResponseProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="28" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.0">
+            <state line="69" column="0" selection-start="1823" selection-end="1823" vertical-scroll-proportion="0.5">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResponseProviderTests.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ResponseProviderTests.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tests/ResponseProviderTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="54" selection-start="1950" selection-end="1950" vertical-scroll-proportion="0.6036364">
+            <state line="67" column="54" selection-start="1950" selection-end="1950" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -131,8 +131,8 @@
         <option value="$PROJECT_DIR$/src/Core/HttpServerProcess.java" />
         <option value="$PROJECT_DIR$/src/Core/ServerRunnerArguments.java" />
         <option value="$PROJECT_DIR$/src/Core/HttpServer.java" />
-        <option value="$PROJECT_DIR$/src/Core/ResponseProvider.java" />
         <option value="$PROJECT_DIR$/src/Tests/ResponseProviderTests.java" />
+        <option value="$PROJECT_DIR$/src/Core/ResponseProvider.java" />
       </list>
     </option>
   </component>
@@ -749,16 +749,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/ResponseProvider.java">
+    <entry file="file://$PROJECT_DIR$/src/Tests/ResponseProviderTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="28" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.0">
+        <state line="67" column="54" selection-start="1950" selection-end="1950" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/ResponseProviderTests.java">
+    <entry file="file://$PROJECT_DIR$/src/Core/ResponseProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="54" selection-start="1950" selection-end="1950" vertical-scroll-proportion="0.6036364">
+        <state line="69" column="0" selection-start="1823" selection-end="1823" vertical-scroll-proportion="0.5">
           <folding />
         </state>
       </provider>

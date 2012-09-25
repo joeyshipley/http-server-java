@@ -26,59 +26,6 @@ public class ResponseProvider
         return loadFileContents(path);
     }
 
-    private String[] loadDirectoryContents(String path)
-    {
-        File directory = new File(path);
-        String[] files = directory.list();
-
-        String responseString = "";
-        responseString += successfulResponseHeaders();
-        responseString += buildHtmlPageStart();
-        for(int i = 0; i < files.length; i++)
-            responseString += convertFileToHtmlLink(files[i]) + "\r\n";
-        responseString += buildHtmlPageEnd();
-
-        return responseString.split("\r\n");
-    }
-
-    private String[] loadFileContents(String path)
-    {
-        if(!fileExists(path))
-            return notFoundResponseHeaders().split("\r\n");
-
-        String[] response = new String[0];
-        try
-        {
-            FileInputStream inputStream = new FileInputStream(path);
-            DataInputStream dataStream = new DataInputStream(inputStream);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(dataStream));
-
-            String fileResponse = "";
-            fileResponse += successfulResponseHeaders();
-
-            boolean continueReadingFile = true;
-            while (continueReadingFile)
-            {
-                String currentLine = reader.readLine();
-                if(currentLine != null)
-                    fileResponse += currentLine + "\r\n";
-                else
-                    continueReadingFile = false;
-            }
-            response = fileResponse.split("\r\n");
-
-            reader.close();
-            dataStream.close();
-            inputStream.close();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        return response;
-    }
-
     public String getActualPath(String filePath)
     {
         if(filePath == null)
@@ -98,6 +45,69 @@ public class ResponseProvider
             return path + "/default.html";
 
         return path + filePath;
+    }
+
+    private String[] loadDirectoryContents(String path)
+    {
+        File directory = new File(path);
+        String[] files = directory.list();
+        String responseString = buildDirectoryResponse(files);
+        return responseString.split("\r\n");
+    }
+
+    private String[] loadFileContents(String path)
+    {
+        if(!fileExists(path))
+            return notFoundResponseHeaders().split("\r\n");
+
+        String[] response = new String[0];
+        try
+        {
+            FileInputStream inputStream = new FileInputStream(path);
+            DataInputStream dataStream = new DataInputStream(inputStream);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(dataStream));
+
+            String fileResponse = buildFileContentsResponse(reader);
+            response = fileResponse.split("\r\n");
+
+            reader.close();
+            dataStream.close();
+            inputStream.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return response;
+    }
+
+    private String buildFileContentsResponse(BufferedReader reader)
+        throws IOException
+    {
+        String fileResponse = "";
+        fileResponse += successfulResponseHeaders();
+        boolean continueReadingFile = true;
+        while (continueReadingFile)
+        {
+            String currentLine = reader.readLine();
+            if(currentLine != null)
+                fileResponse += currentLine + "\r\n";
+            else
+                continueReadingFile = false;
+        }
+        return fileResponse;
+    }
+
+    private String buildDirectoryResponse(String[] files)
+    {
+        String responseString = "";
+        responseString += successfulResponseHeaders();
+        responseString += buildHtmlPageStart();
+        for(int i = 0; i < files.length; i++)
+            responseString += convertFileToHtmlLink(files[i]) + "\r\n";
+        responseString += buildHtmlPageEnd();
+        return responseString;
     }
 
     private String buildHtmlPageStart()
