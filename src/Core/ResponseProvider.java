@@ -1,14 +1,26 @@
 package Core;
 
+import Core.Helpers.UrlHelper;
+import Core.PageParsers.DefaultPageParser;
+import Core.PageParsers.ShipwreckServerPageParser;
+import Core.PageParsers.SingleLineParser;
+
 import java.io.*;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ResponseProvider
 {
     private String directory;
+    private DefaultPageParser defaultParser;
+    private ShipwreckServerPageParser shipwreckParser;
 
     private ResponseProvider(String rootDirectory)
     {
         directory = rootDirectory;
+        defaultParser = DefaultPageParser.create();
+        shipwreckParser = ShipwreckServerPageParser.create();
     }
 
     public static ResponseProvider create(String rootDirectory)
@@ -18,18 +30,22 @@ public class ResponseProvider
 
     public String[] getResponseFrom(String method, String path)
     {
-        path = getActualPath(path);
+        String actualPath = getActualPath(path);
 
-        if(isDirectory(path))
-            return loadDirectoryContents(path);
+        if(isDirectory(actualPath))
+            return loadDirectoryContents(actualPath);
 
-        return loadFileContents(path);
+        List<AbstractMap.SimpleEntry<String, String>> queryStringValues = UrlHelper.parseQuerystringValuesFrom(path);
+        return loadFileContents(actualPath, queryStringValues);
     }
 
     public String getActualPath(String filePath)
     {
         if(filePath == null)
             filePath = "";
+
+        filePath = removeQuerystringValues(filePath);
+
         if(hasTrailingSlash(filePath))
             filePath = filePath.substring(0, filePath.length() - 1);
         if(shouldPathHaveLeadingSlash(filePath))
@@ -42,9 +58,20 @@ public class ResponseProvider
             return path + "/";
 
         if(isPathRootPath(filePath))
-            return path + "/default.html";
+            return path + "/default.shipwreck";
+
+        if(isShipwreckPageWithoutExtension(filePath))
+            return path + filePath + ".shipwreck";
 
         return path + filePath;
+    }
+
+    private String removeQuerystringValues(String path)
+    {
+        int indexOfQuestionMark = path.indexOf("?");
+        if(indexOfQuestionMark > 0)
+            path = path.substring(0, indexOfQuestionMark);
+        return path;
     }
 
     private String[] loadDirectoryContents(String path)
@@ -55,7 +82,7 @@ public class ResponseProvider
         return responseString.split("\r\n");
     }
 
-    private String[] loadFileContents(String path)
+    private String[] loadFileContents(String path, List<AbstractMap.SimpleEntry<String, String>> data)
     {
         if(!fileExists(path))
             return notFoundResponseHeaders().split("\r\n");
@@ -67,7 +94,10 @@ public class ResponseProvider
             DataInputStream dataStream = new DataInputStream(inputStream);
             BufferedReader reader = new BufferedReader(new InputStreamReader(dataStream));
 
-            String fileResponse = buildFileContentsResponse(reader);
+            String fileResponse = "";
+            SingleLineParser parser = isShipwreckServerPage(path) ? shipwreckParser : defaultParser;
+            fileResponse = buildFileContentsResponse(reader, parser, data);
+            fileResponse = successfulResponseHeaders() + fileResponse;
             response = fileResponse.split("\r\n");
 
             reader.close();
@@ -82,20 +112,13 @@ public class ResponseProvider
         return response;
     }
 
-    private String buildFileContentsResponse(BufferedReader reader)
+    private String buildFileContentsResponse(BufferedReader reader, SingleLineParser parser, List<AbstractMap.SimpleEntry<String, String>> data)
         throws IOException
     {
         String fileResponse = "";
-        fileResponse += successfulResponseHeaders();
-        boolean continueReadingFile = true;
-        while (continueReadingFile)
-        {
-            String currentLine = reader.readLine();
-            if(currentLine != null)
-                fileResponse += currentLine + "\r\n";
-            else
-                continueReadingFile = false;
-        }
+        String currentLine;
+        while ((currentLine = reader.readLine()) != null)
+            fileResponse += parser.parseSingleLine(currentLine, data) + "\r\n";
         return fileResponse;
     }
 
@@ -166,6 +189,26 @@ public class ResponseProvider
     {
         File file = new File(path);
         return file.exists() && file.isDirectory();
+    }
+
+    private boolean isShipwreckPageWithoutExtension(String path)
+    {
+        String[] pathParts = path.split("/");
+        if(pathParts.length == 0)
+            return false;
+
+        String filename = pathParts[pathParts.length - 1];
+        return hasFileExtension(filename);
+    }
+
+    private boolean hasFileExtension(String filename)
+    {
+        return filename.indexOf(".") == -1;
+    }
+
+    private boolean isShipwreckServerPage(String path)
+    {
+        return path.indexOf(".shipwreck") > -1;
     }
 
     private String successfulResponseHeaders()

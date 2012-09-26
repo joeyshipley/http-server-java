@@ -21,7 +21,7 @@ public class ResponseProviderTests
     public void when_asking_for_the_path___and_nothing_was_passed_in___it_returns_the_default_web_page()
     {
         String path = SUT.getActualPath("");
-        assertEquals("./public/default.html", path);
+        assertEquals("./public/default.shipwreck", path);
     }
 
     @Test
@@ -39,17 +39,36 @@ public class ResponseProviderTests
     }
 
     @Test
+    public void when_asking_for_the_path___and_they_are_asking_for_a_page___with_querystring_values___it_returns_the_page()
+    {
+        String path = SUT.getActualPath("/default.html?test=test");
+        assertEquals("./public/default.html", path);
+    }
+
+    @Test
     public void when_asking_for_the_path___and_something_was_passed_in___it_returns_the_root_path()
     {
-        String path = SUT.getActualPath("/some/thing");
-        assertEquals("./public/some/thing", path);
+        String path = SUT.getActualPath("/file1");
+        assertEquals("./public/file1.shipwreck", path);
     }
 
     @Test
     public void when_asking_for_the_path___and_something_was_passed_in_with_an_incomplete_path___it_returns_the_root_path()
     {
-        String path = SUT.getActualPath("some/thing");
-        assertEquals("./public/some/thing", path);
+        String path = SUT.getActualPath("file1");
+        assertEquals("./public/file1.shipwreck", path);
+    }
+
+    @Test public void when_asking_for_the_path___and_the_file_path_does_not_have_an_extension___it_is_a_shipwreck_page()
+    {
+        String path = SUT.getActualPath("/example");
+        assertEquals("./public/example.shipwreck", path);
+    }
+
+    @Test public void when_asking_for_the_path___and_the_file_path_does_not_have_an_extension___and_it_has_querystring_values___it_is_a_shipwreck_page()
+    {
+        String path = SUT.getActualPath("/example?test1=1&test2=2");
+        assertEquals("./public/example.shipwreck", path);
     }
 
     @Test
