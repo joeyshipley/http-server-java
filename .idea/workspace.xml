@@ -67,19 +67,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RequestParser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Core/RequestResponse/RequestParser.java">
+      <file leaf-file-name="ResponseProvider.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Core/RequestResponse/ResponseProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="41" selection-start="664" selection-end="664" vertical-scroll-proportion="0.0">
+            <state line="25" column="57" selection-start="737" selection-end="737" vertical-scroll-proportion="0.45527157">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestResponseHandler.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RequestResponseHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Core/RequestResponse/RequestResponseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="40" selection-start="1869" selection-end="1869" vertical-scroll-proportion="0.43661973">
+            <state line="62" column="40" selection-start="1869" selection-end="1869" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -103,7 +103,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/Core/Helpers/UrlHelper.java" />
-        <option value="$PROJECT_DIR$/src/Core/PageParsers/ShipwreckServerPageParser.java" />
         <option value="$PROJECT_DIR$/src/Core/RequestParser.java" />
         <option value="$PROJECT_DIR$/src/Tests/UrlHelperTests.java" />
         <option value="$PROJECT_DIR$/src/Core/ResponseProvider.java" />
@@ -111,13 +110,14 @@
         <option value="$PROJECT_DIR$/src/Core/ServerRunnerArguments.java" />
         <option value="$PROJECT_DIR$/src/Core/HttpServer.java" />
         <option value="$PROJECT_DIR$/src/Tests/Helpers/ClientCommunicationSimulator.java" />
-        <option value="$PROJECT_DIR$/src/Core/RequestResponse/RequestInformation.java" />
         <option value="$PROJECT_DIR$/src/Core/RequestResponse/ResponseProvider.java" />
         <option value="$PROJECT_DIR$/src/Tests/ResponseProviderTests.java" />
-        <option value="$PROJECT_DIR$/src/Core/RequestResponse/RequestParser.java" />
-        <option value="$PROJECT_DIR$/src/Tests/RequestParserTests.java" />
         <option value="$PROJECT_DIR$/src/Tests/RequestResponseHandlerTests.java" />
         <option value="$PROJECT_DIR$/src/Core/RequestResponse/RequestResponseHandler.java" />
+        <option value="$PROJECT_DIR$/src/Core/PageParsers/ShipwreckServerPageParser.java" />
+        <option value="$PROJECT_DIR$/src/Core/RequestResponse/RequestInformation.java" />
+        <option value="$PROJECT_DIR$/src/Tests/RequestParserTests.java" />
+        <option value="$PROJECT_DIR$/src/Core/RequestResponse/RequestParser.java" />
       </list>
     </option>
   </component>
@@ -154,6 +154,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -169,46 +179,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="http-server-java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http-server-java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http-server-java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Helpers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -266,28 +236,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http-server-java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PageParsers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane">
@@ -300,16 +248,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="http-server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -329,8 +267,8 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
   </component>
@@ -394,24 +332,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -438,6 +358,24 @@
       <envs />
       <properties />
       <listeners />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -617,6 +555,7 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5720721" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3228228" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3978979" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -633,7 +572,6 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.527027" sideWeight="0.91810346" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3228228" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -697,16 +635,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/util/ArrayList.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="13" selection-start="1540" selection-end="1540" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/util/AbstractList.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="17" selection-start="2274" selection-end="2274" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/ServerRunnerArguments.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="26" selection-start="491" selection-end="491" vertical-scroll-proportion="0.46948355">
@@ -749,40 +677,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/RequestResponse/RequestInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="261" selection-end="261" vertical-scroll-proportion="0.28169015">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/RequestResponse/ResponseProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="57" selection-start="737" selection-end="737" vertical-scroll-proportion="0.45527157">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/PageParsers/ShipwreckServerPageParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="41" selection-start="1232" selection-end="1232" vertical-scroll-proportion="0.5070422" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tests/ResponseProviderTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="61" selection-start="421" selection-end="421" vertical-scroll-proportion="-1.827476">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/RequestParserTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="48" selection-start="2387" selection-end="2387" vertical-scroll-proportion="-0.07188498">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -796,16 +694,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core/RequestResponse/RequestParser.java">
+    <entry file="file://$PROJECT_DIR$/src/Core/PageParsers/DefaultPageParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="41" selection-start="664" selection-end="664" vertical-scroll-proportion="0.0">
+        <state line="6" column="13" selection-start="95" selection-end="95" vertical-scroll-proportion="0.11737089">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/PageParsers/ShipwreckServerPageParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="52" selection-start="703" selection-end="703" vertical-scroll-proportion="0.36619717">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/PageParsers/SingleLineParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="98" selection-end="98" vertical-scroll-proportion="0.09389672">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Core/RequestResponse/RequestResponseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="40" selection-start="1869" selection-end="1869" vertical-scroll-proportion="0.43661973">
+        <state line="62" column="40" selection-start="1869" selection-end="1869" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/RequestParserTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="0" selection-start="2265" selection-end="2265" vertical-scroll-proportion="0.6">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/RequestResponse/RequestParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="37" selection-start="2770" selection-end="2770" vertical-scroll-proportion="0.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/RequestResponse/RequestInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="49" selection-start="965" selection-end="965" vertical-scroll-proportion="1.6145834">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core/RequestResponse/ResponseProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="57" selection-start="737" selection-end="737" vertical-scroll-proportion="0.45527157">
           <folding />
         </state>
       </provider>

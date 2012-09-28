@@ -26,4 +26,9 @@ public class RequestInformation
     {
         return new RequestInformation(method, path, data);
     }
+
+    public static RequestInformation createEmpty()
+    {
+        return RequestInformation.create("", "");
+    }
 }

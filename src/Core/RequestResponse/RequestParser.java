@@ -19,9 +19,9 @@ public class RequestParser
     {
         String[] request = inRequest.split("\r\n");
         if(request.length == 0)
-            return RequestInformation.create("", "");
+            return RequestInformation.createEmpty();
 
-        RequestInformation info = buildHeaderInfo(getHeaderValueFrom(request));
+        RequestInformation info = buildInfoFromHeader(getHeaderValueFrom(request));
         populateQueryStringData(info);
         populateFormData(info, request);
 
@@ -40,28 +40,61 @@ public class RequestParser
 
     private void populateFormData(RequestInformation info, String[] request)
     {
-        String data = request[request.length - 1];
-        if(data.contains(": "))
+        String data = getDataStringFromRequest(request);
+        if(isActuallyDataStringAndNotARequestHeaderValue(data))
             data = "";
         info.data.addAll(parseDataFrom(data));
     }
 
-    public RequestInformation buildHeaderInfo(String header)
+    private String getDataStringFromRequest(String[] request)
+    {
+        return request[request.length - 1];
+    }
+
+    private boolean isActuallyDataStringAndNotARequestHeaderValue(String lineInQuestion)
+    {
+        // NOTE: the idea that data won't contain ": " sucks as a logic check,
+        // but works for the constraints of the project & time.
+        return lineInQuestion.contains(": ");
+    }
+
+    public RequestInformation buildInfoFromHeader(String header)
     {
         String[] headerParts = header.split(" ");
-        if(header.length() < 2)
-            return RequestInformation.create(headerParts[0], "");
+        String method = getMethodFromHeaderParts(headerParts);
+        String path = getPathFromHeaderParts(headerParts);
 
-        return RequestInformation.create(headerParts[0], headerParts[1]);
+        return RequestInformation.create(method, path);
+    }
+
+    private String getMethodFromHeaderParts(String[] headerParts)
+    {
+        if(headerParts.length < 1)
+            return "";
+
+        return headerParts[0];
+    }
+
+    private String getPathFromHeaderParts(String[] headerParts)
+    {
+        if(headerParts.length < 2)
+            return "";
+
+        return headerParts[1];
     }
 
     public List<AbstractMap.SimpleEntry<String, String>> parseQuerystringValuesFrom(String url)
     {
-        if(url == null || (!url.contains("?") && url.indexOf("?") != url.length()))
+        if(!hasQuerystringValues(url))
             return new ArrayList<AbstractMap.SimpleEntry<String, String>>();
 
         String querystring = url.substring(url.indexOf("?") + 1, url.length());
         return parseDataFrom(querystring);
+    }
+
+    private boolean hasQuerystringValues(String url)
+    {
+        return url != null && url.contains("?") && url.indexOf("?") != url.length();
     }
 
     private List<AbstractMap.SimpleEntry<String, String>> parseDataFrom(String data)

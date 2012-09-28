@@ -32,13 +32,17 @@ public class ShipwreckServerPageParser implements SingleLineParser
                 continueLookingSyntaxMatches = false;
                 continue;
             }
-
-            String lookupKey = regexMatcher.group(0).replace("<^=", "").replace("^>", "").trim();
-            String value = getValueFrom(values, lookupKey);
-            line = regexMatcher.replaceFirst(value);
+            line = replaceFirstMatchForActualValues(regexMatcher, values);
         }
 
         return line;
+    }
+
+    private String replaceFirstMatchForActualValues(Matcher regexMatcher, List<AbstractMap.SimpleEntry<String, String>> values)
+    {
+        String lookupKey = regexMatcher.group(0).replace("<^=", "").replace("^>", "").trim();
+        String value = getValueFrom(values, lookupKey);
+        return regexMatcher.replaceFirst(value);
     }
 
     private String getValueFrom(List<AbstractMap.SimpleEntry<String, String>> values, String key)
