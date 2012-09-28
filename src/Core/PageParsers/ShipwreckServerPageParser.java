@@ -47,7 +47,7 @@ public class ShipwreckServerPageParser implements SingleLineParser
         while(iterator.hasNext())
         {
             AbstractMap.SimpleEntry<String, String> entry = iterator.next();
-            if(entry.getKey().equals(key))
+            if(entry.getKey().toLowerCase().equals(key.toLowerCase()))
                 return entry.getValue();
         }
 

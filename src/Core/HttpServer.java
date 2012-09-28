@@ -1,11 +1,9 @@
 package Core;
 
-import java.io.BufferedReader;
+import Core.RequestResponse.RequestResponseHandler;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 public class HttpServer
 {
@@ -30,7 +28,7 @@ public class HttpServer
         serverSocket = new ServerSocket(port);
         ServerRunner.log("HTTP Server on port: " + port);
         while(true)
-            createHttpServerProcessOnNewThread();
+            createRequestResponseHandlerOnNewThread();
     }
 
     public void stop()
@@ -39,10 +37,10 @@ public class HttpServer
         serverSocket.close();
     }
 
-    private void createHttpServerProcessOnNewThread()
+    private void createRequestResponseHandlerOnNewThread()
     {
-        HttpServerProcess process = HttpServerProcess.createFrom(serverSocket, directory);
-        Thread thread = new Thread(process);
+        RequestResponseHandler handler = RequestResponseHandler.createFrom(serverSocket, directory);
+        Thread thread = new Thread(handler);
         thread.run();
     }
 }

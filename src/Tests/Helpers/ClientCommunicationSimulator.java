@@ -5,30 +5,32 @@ import java.net.Socket;
 
 public class ClientCommunicationSimulator
 {
-    private static String _requestHeader;
-    private static Socket _clientSocket;
+    private static String requestHeader;
+    private static Socket clientSocket;
+    private static String postData;
 
     public static void sendRequest(Socket client, String httpMethod, String path, String data)
         throws IOException
     {
-        _clientSocket = client;
-        _requestHeader = httpMethod + " " + path + " HTTP/1.0\r\n";
-        System.out.println(_requestHeader);
+        requestHeader = httpMethod + " " + path + " HTTP/1.0\r\n";
+        System.out.println(requestHeader);
+        clientSocket = client;
+        postData = data;
 
         Thread thread = new Thread(new Runnable() {
             public void run()
             {
                 try
                 {
-                    BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(_clientSocket.getOutputStream(), "UTF8"));
-                    wr.write(_requestHeader);
+                    BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream(), "UTF8"));
+                    wr.write(requestHeader);
                     wr.write("");
-                    //if(data != null && data != "") {
-                    //    wr.write(data);
-                    //}
+                    if(postData != null && postData != "") {
+                        wr.write(postData);
+                    }
                     wr.flush();
 
-                    BufferedReader rd = new BufferedReader(new InputStreamReader(_clientSocket.getInputStream()));
+                    BufferedReader rd = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                     String response = "";
                     while(true)
                     {

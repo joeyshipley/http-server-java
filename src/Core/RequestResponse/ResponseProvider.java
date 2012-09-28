@@ -1,13 +1,11 @@
-package Core;
+package Core.RequestResponse;
 
-import Core.Helpers.UrlHelper;
 import Core.PageParsers.DefaultPageParser;
 import Core.PageParsers.ShipwreckServerPageParser;
 import Core.PageParsers.SingleLineParser;
 
 import java.io.*;
 import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResponseProvider
@@ -28,15 +26,14 @@ public class ResponseProvider
         return new ResponseProvider(rootDirectory);
     }
 
-    public String[] getResponseFrom(String method, String path)
+    public String[] getResponseFrom(RequestInformation request)
     {
-        String actualPath = getActualPath(path);
+        String actualPath = getActualPath(request.path);
 
         if(isDirectory(actualPath))
             return loadDirectoryContents(actualPath);
 
-        List<AbstractMap.SimpleEntry<String, String>> queryStringValues = UrlHelper.parseQuerystringValuesFrom(path);
-        return loadFileContents(actualPath, queryStringValues);
+        return loadFileContents(actualPath, request.data);
     }
 
     public String getActualPath(String filePath)

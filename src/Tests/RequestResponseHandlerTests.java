@@ -1,16 +1,16 @@
 package Tests;
 
+import Core.RequestResponse.RequestResponseHandler;
 import Tests.Helpers.*;
 import org.junit.*;
 import static junit.framework.Assert.*;
 import java.io.*;
 import java.net.*;
-import Core.*;
 
-public class HttpServerProcessTests
+public class RequestResponseHandlerTests
 {
     private int TEST_PORT = 6000;
-    private HttpServerProcess _SUT = null;
+    private RequestResponseHandler _SUT = null;
     private ServerSocket _serverSocket;
 
     @Before
@@ -18,7 +18,7 @@ public class HttpServerProcessTests
          throws IOException
     {
         _serverSocket = new ServerSocket(TEST_PORT);
-        _SUT = HttpServerProcess.createFrom(_serverSocket, "public");
+        _SUT = RequestResponseHandler.createFrom(_serverSocket, "public");
     }
 
     @After

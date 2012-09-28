@@ -16,6 +16,8 @@ public class ServerRunnerArguments
         int port = Constants.PORT;
         String directory = Constants.DIRECTORY;
 
+        // TODO: fragile, could definitely use some love & validation
+
         for(int i = 0; i < args.length; i++)
         {
             if(args[i] == null) { continue; }

@@ -1,24 +1,26 @@
-package Core;
+package Core.RequestResponse;
+
+import Core.ServerRunner;
 
 import java.io.*;
 import java.net.*;
 
-public class HttpServerProcess implements Runnable
+public class RequestResponseHandler implements Runnable
 {
     private ServerSocket server;
     private RequestParser requestParser;
     private ResponseProvider responseProvider;
 
-    private HttpServerProcess(ServerSocket serverSocket, String rootDirectory)
+    private RequestResponseHandler(ServerSocket serverSocket, String rootDirectory)
     {
         server = serverSocket;
         requestParser = RequestParser.create();
         responseProvider = ResponseProvider.create(rootDirectory);
     }
 
-    public static HttpServerProcess createFrom(ServerSocket serverSocket, String rootDirectory)
+    public static RequestResponseHandler createFrom(ServerSocket serverSocket, String rootDirectory)
     {
-        return new HttpServerProcess(serverSocket, rootDirectory);
+        return new RequestResponseHandler(serverSocket, rootDirectory);
     }
 
     public void run()
@@ -35,7 +37,7 @@ public class HttpServerProcess implements Runnable
         {
             Socket clientSocket = server.accept();
             RequestInformation info = readRequest(clientSocket);
-            sendResponse(clientSocket, info.method, info.path);
+            sendResponse(clientSocket, info);
             clientSocket.close();
         }
         catch (IOException e)
@@ -48,22 +50,12 @@ public class HttpServerProcess implements Runnable
         throws IOException
     {
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-
-        String requestHeader = "";
-
-        boolean continueReading = true;
-        while(continueReading)
-        {
-            String currentRequestLine = in.readLine();
-            ServerRunner.log(currentRequestLine);
-
-            if(requestHeader.equals(""))
-                requestHeader = currentRequestLine;
-
-            if(isEndOfRequestHeader(currentRequestLine))
-                continueReading = false;
+        StringBuffer buffer = new StringBuffer();
+        while (in.ready()) {
+            int ch = in.read();
+            buffer.append((char) ch);
         }
-        return requestParser.buildHeaderInfo(requestHeader);
+        return requestParser.parseInfoFromRequest(buffer.toString());
     }
 
     private boolean isEndOfRequestHeader(String currentHeaderLineValue)
@@ -71,10 +63,10 @@ public class HttpServerProcess implements Runnable
         return currentHeaderLineValue.equals("");
     }
 
-    private void sendResponse(Socket clientSocket, String method, String path)
+    private void sendResponse(Socket clientSocket, RequestInformation request)
         throws IOException
     {
-        String[] response = responseProvider.getResponseFrom(method, path);
+        String[] response = responseProvider.getResponseFrom(request);
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
         for(int i = 0; i < response.length; i++)
             out.println(response[i]);

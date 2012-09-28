@@ -1,8 +1,21 @@
 <html>
 <head>
-	<title>HTTP Server: Hello World</title>
+  <title>HTTP Server: Hello World</title>
 </head>
 <body>
-	<p>Hello World</p>
+  <p>Hello World</p>
+  <div>
+    <h3>HTTP Methods</h3>
+    <p>
+      <strong>GET: </strong>
+      <a href="/some-script-url?variable_1=Big Bird says...&variable_2=Hello World!">send with uerystring values &raquo;</a></p>
+    <div>
+      <form name="post-form" method="POST" action="/form">
+        <strong>POST: </strong>
+        <input type="text" name="My" value="Example" />
+        <input type="submit" name="post-button" value="POST" />
+      </form>
+    </div>
+  </div>
 </body>
 </html>

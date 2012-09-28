@@ -1,11 +1,12 @@
 package Tests;
 
-import Core.ResponseProvider;
-import org.junit.*;
+import Core.RequestResponse.RequestInformation;
+import Core.RequestResponse.ResponseProvider;
+import org.junit.Before;
+import org.junit.Test;
 
-import java.io.File;
-
-import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 public class ResponseProviderTests
 {
@@ -74,7 +75,7 @@ public class ResponseProviderTests
     @Test
     public void when_asking_for_the_root_response___it_returns_hello_world()
     {
-        String[] response = SUT.getResponseFrom("GET", "");
+        String[] response = SUT.getResponseFrom(RequestInformation.create("GET", ""));
         boolean hasHelloWorld = false;
         for(int i = 0; i < response.length; i++)
             if(response[i].toLowerCase().contains("hello world")) hasHelloWorld = true;
@@ -85,7 +86,7 @@ public class ResponseProviderTests
     @Test
     public void when_asking_for_a_response_that_is_a_valid_response___it_returns_a_200_OK_in_the_results()
     {
-        String[] response = SUT.getResponseFrom("GET", "/");
+        String[] response = SUT.getResponseFrom(RequestInformation.create("GET", "/"));
         boolean has200OK = false;
         for(int i = 0; i < response.length; i++)
             if(response[i].toLowerCase().contains("http/1.1 200 ok")) has200OK = true;
@@ -96,7 +97,7 @@ public class ResponseProviderTests
     @Test
     public void when_asking_for_a_response_that_is_not_valid___it_returns_a_404_result()
     {
-        String[] response = SUT.getResponseFrom("GET", "/404/doesnt/exist");
+        String[] response = SUT.getResponseFrom(RequestInformation.create("GET", "/404/doesnt/exist"));
         boolean has404 = false;
         for(int i = 0; i < response.length; i++)
             if(response[i].toLowerCase().contains("http/1.1 404 not found")) has404 = true;
@@ -107,7 +108,7 @@ public class ResponseProviderTests
     @Test
     public void when_asking_for_a_response_that_is_for_a_directory___it_returns_the_contents_of_the_directory()
     {
-        String[] response = SUT.getResponseFrom("GET", "/public");
+        String[] response = SUT.getResponseFrom(RequestInformation.create("GET", "/public"));
         boolean hasFileListing = false;
         for(int i = 0; i < response.length; i++)
             if(response[i].toLowerCase().contains("file1")) hasFileListing = true;
@@ -118,7 +119,7 @@ public class ResponseProviderTests
     @Test
     public void when_asking_for_a_response_that_is_for_a_directory___and_the_path_has_a_trailing_slash___it_returns_the_contents_of_the_directory()
     {
-        String[] response = SUT.getResponseFrom("GET", "/public/");
+        String[] response = SUT.getResponseFrom(RequestInformation.create("GET", "/public/"));
         boolean hasFileListing = false;
         for(int i = 0; i < response.length; i++)
             if(response[i].toLowerCase().contains("file1")) hasFileListing = true;
