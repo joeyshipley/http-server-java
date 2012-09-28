@@ -50,12 +50,36 @@ public class RequestResponseHandler implements Runnable
         throws IOException
     {
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+        String requestString = "";
+        boolean continueReading = true;
+        while(continueReading)
+        {
+            String currentRequestLine = in.readLine();
+            ServerRunner.log("request line: " + currentRequestLine);
+            requestString += currentRequestLine + "\r\n";
+
+            if(isEndOfRequestHeader(currentRequestLine))
+                continueReading = false;
+        }
+
+        requestString += gatherFormDataIfAvailable(in);
+
+        return requestParser.parseInfoFromRequest(requestString);
+    }
+
+    private String gatherFormDataIfAvailable(BufferedReader in)
+        throws IOException
+    {
+        if(!in.ready())
+            return "";
+
         StringBuffer buffer = new StringBuffer();
         while (in.ready()) {
             int ch = in.read();
             buffer.append((char) ch);
         }
-        return requestParser.parseInfoFromRequest(buffer.toString());
+        return buffer.toString();
     }
 
     private boolean isEndOfRequestHeader(String currentHeaderLineValue)
