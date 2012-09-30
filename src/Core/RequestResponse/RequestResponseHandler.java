@@ -7,40 +7,38 @@ import java.net.*;
 
 public class RequestResponseHandler implements Runnable
 {
-    private ServerSocket server;
+    private Socket clientSocket;
     private RequestParser requestParser;
     private ResponseProvider responseProvider;
 
-    private RequestResponseHandler(ServerSocket serverSocket, String rootDirectory)
+    private RequestResponseHandler(Socket clientSocket, String rootDirectory)
     {
-        server = serverSocket;
+        this.clientSocket = clientSocket;
         requestParser = RequestParser.create();
         responseProvider = ResponseProvider.create(rootDirectory);
     }
 
-    public static RequestResponseHandler createFrom(ServerSocket serverSocket, String rootDirectory)
+    public static RequestResponseHandler createFrom(Socket clientSocket, String rootDirectory)
     {
-        return new RequestResponseHandler(serverSocket, rootDirectory);
+        return new RequestResponseHandler(clientSocket, rootDirectory);
     }
 
     public void run()
     {
-        ServerRunner.log("CTRL-C to end it.\r\n");
-        boolean continueListening = true;
-        while(continueListening)
-            manageCommunicationCycle();
+        manageCommunicationCycle();
     }
 
     public void manageCommunicationCycle()
     {
+        ServerRunner.log("Processing on thread: " + Thread.currentThread().getName());
         try
         {
-            Socket clientSocket = server.accept();
             RequestInformation info = readRequest(clientSocket);
             sendResponse(clientSocket, info);
+            pauseForInputReading();
             clientSocket.close();
         }
-        catch (IOException e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -95,5 +93,11 @@ public class RequestResponseHandler implements Runnable
         for(int i = 0; i < response.length; i++)
             out.println(response[i]);
         out.flush();
+    }
+
+    private void pauseForInputReading()
+        throws InterruptedException
+    {
+        Thread.sleep(1L);
     }
 }

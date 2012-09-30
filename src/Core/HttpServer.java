@@ -4,6 +4,7 @@ import Core.RequestResponse.RequestResponseHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class HttpServer
 {
@@ -27,6 +28,7 @@ public class HttpServer
     {
         serverSocket = new ServerSocket(port);
         ServerRunner.log("HTTP Server on port: " + port);
+        ServerRunner.log("CTRL-C to end it.\r\n");
         while(true)
             createRequestResponseHandlerOnNewThread();
     }
@@ -38,9 +40,11 @@ public class HttpServer
     }
 
     private void createRequestResponseHandlerOnNewThread()
+        throws IOException
     {
-        RequestResponseHandler handler = RequestResponseHandler.createFrom(serverSocket, directory);
+        Socket clientSocket = serverSocket.accept();
+        RequestResponseHandler handler = RequestResponseHandler.createFrom(clientSocket, directory);
         Thread thread = new Thread(handler);
-        thread.run();
+        thread.start();
     }
 }
