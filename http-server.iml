@@ -34,6 +34,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jruby" level="project" />
   </component>
 </module>
 
