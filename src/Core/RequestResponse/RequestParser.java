@@ -63,8 +63,22 @@ public class RequestParser
         String[] headerParts = header.split(" ");
         String method = getMethodFromHeaderParts(headerParts);
         String path = getPathFromHeaderParts(headerParts);
+        boolean isTttRoute = confirmIfIsTicTacToeGame(headerParts);
 
-        return RequestInformation.create(method, path);
+        return RequestInformation.create(method, path, isTttRoute);
+    }
+
+    private boolean confirmIfIsTicTacToeGame(String[] headerParts)
+    {
+        if(headerParts.length < 1)
+            return false;
+
+        boolean isTtt = false;
+        for(int i = 0; i < headerParts.length; i++)
+            if(headerParts[i].contains("tictactoe"))
+                isTtt = true;
+
+        return isTtt;
     }
 
     private String getMethodFromHeaderParts(String[] headerParts)

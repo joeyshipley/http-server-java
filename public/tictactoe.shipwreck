@@ -1,0 +1,13 @@
+<html>
+<head>
+  <title>Ruby Console Tic-Tac-Toe Game</title>
+</head>
+<body>
+  <h2>Ruby Console Tic-Tac-Toe Game</h2>
+  <div id="console-output"><^= consoleOutput ^></div>
+  <form action="tictacktoe" method="post">
+    <input type="text" name="playerInput" />
+    <input type="submit" value="Send Input" />
+  </form>
+</body>
+</html>

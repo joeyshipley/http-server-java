@@ -121,6 +121,20 @@ public class RequestParserTests
     }
 
     @Test
+    public void when_building_the_request_information_from_a_tictactoe_game_request()
+    {
+        boolean isTtt = SUT.buildInfoFromHeader("GET /tictactoe HTTP/1.1").isConsoleGameRoute;
+        assertTrue(isTtt);
+    }
+
+    @Test
+    public void when_building_the_request_information_from_a_request_that_is_not_a_tictactoe_game()
+    {
+        boolean isTtt = SUT.buildInfoFromHeader("GET /example/file.html HTTP/1.1").isConsoleGameRoute;
+        assertFalse(isTtt);
+    }
+
+    @Test
     public void when_asking_for_querystring_values_from_a_url_without_them___it_returns_an_empty_list()
     {
         List<AbstractMap.SimpleEntry<String, String>> results = SUT.parseQuerystringValuesFrom("mypath.html?");

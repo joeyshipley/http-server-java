@@ -1,6 +1,8 @@
-require './lib/ttt/ttt_game_input_adapter'
-
+$LOAD_PATH << './lib/ttt'
+$LOAD_PATH << './lib/ttt/gems'
 $LOAD_PATH << './lib/ttt/ttt_game/lib'
+
+require 'ttt_game_input_adapter'
 require 'game_engine'
 require 'r18n-desktop'
 include R18n::Helpers
